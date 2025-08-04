@@ -333,22 +333,22 @@ export default function RestReveal() {
                           id={`q${index}-${value}`}
                           className={`w-5 h-5 ${
                             value <= 2
-                              ? "border-red-300 text-red-600"
+                              ? "border-green-300 text-green-600"
                               : value === 3
                                 ? "border-yellow-300 text-yellow-600"
-                                : "border-green-300 text-green-600"
+                                : "border-red-300 text-red-600"
                           }`}
                         />
                         <Label htmlFor={`q${index}-${value}`} className="text-xs text-slate-500 cursor-pointer">
                           {value === 1
-                            ? "😔 Not true"
+                            ? "Not true"
                             : value === 2
-                              ? "🤔 Rarely"
+                              ? "Rarely"
                               : value === 3
-                                ? "😐 Sometimes"
+                                ? "Sometimes"
                                 : value === 4
-                                  ? "😟 Often"
-                                  : "😰 Very true"}
+                                  ? "Often"
+                                  : "Very true"}
                         </Label>
                       </div>
                     ))}
