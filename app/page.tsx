@@ -21,51 +21,37 @@ const restTypes = [
 const questions = {
   "Mental Rest": [
     "I often feel overwhelmed by racing thoughts",
-    "I struggle to stay focused",
     "My brain feels foggy even after sleep",
-    "I replay conversations or moments repeatedly",
     "I feel mentally drained after an average day",
   ],
   "Physical Rest": [
     "I wake up tired even after a full night's sleep",
     "My body feels sore, tense, or fatigued regularly",
-    "I skip movement or stretching even though I know it helps",
     "I rely on caffeine to function normally",
-    "I rarely prioritize rest or recovery for my body",
   ],
   "Emotional Rest": [
     "I feel emotionally exhausted or easily irritated",
     "I often pretend I'm okay when I'm not",
-    "I have little space to express my emotions",
     "I feel responsible for other people's feelings",
-    "I long for more honesty and relief",
   ],
   "Social Rest": [
     "I feel drained by social interactions",
-    "I say yes to social things when I don't want to",
     "I don't feel like myself around others",
-    "I miss energizing, honest relationships",
     "I crave deeper connection",
   ],
   "Spiritual Rest": [
     "I feel disconnected from deeper purpose",
     "I feel my daily life lacks meaning",
-    "I want more time to reflect or feel inspired",
-    "I miss feeling connected to something greater than myself",
     "I want to live in alignment with my values",
   ],
   "Sensory Rest": [
     "I feel overstimulated by noise, light, or screens",
     "I spend many hours in front of screens daily",
-    "I feel agitated in loud or crowded places",
     "I rarely experience true silence or stillness",
-    "I find it hard to relax without digital input",
   ],
   "Intellectual Rest": [
     "I feel mentally under-stimulated or bored",
     "I miss learning or creative challenge",
-    "I don't have time for interesting or stimulating tasks",
-    "I rarely engage in things that inspire me",
     "I feel mentally flat or uninspired",
   ],
 }
@@ -145,7 +131,7 @@ export default function RestReveal() {
 
   const canProceed = () => {
     const currentAnswers = answers[currentRestType.name] || []
-    return currentAnswers.length === 5 && currentAnswers.every((answer) => answer >= 1 && answer <= 5)
+    return currentAnswers.length === 3 && currentAnswers.every((answer) => answer >= 1 && answer <= 5)
   }
 
   const nextStep = () => {
@@ -232,7 +218,7 @@ export default function RestReveal() {
                           {result.name}
                         </h3>
                       </div>
-                      <span className="text-sm bg-white px-3 py-1 rounded-full font-medium">📊 {result.score}/25</span>
+                      <span className="text-sm bg-white px-3 py-1 rounded-full font-medium">📊 {result.score}/15</span>
                     </div>
 
                     <div className="grid gap-3">
@@ -256,7 +242,7 @@ export default function RestReveal() {
                 </p>
               </div>
 
-              <div className="flex justify-center mt-8">
+              <div className="flex flex-col items-center gap-4 mt-8">
                 <Button
                   onClick={restart}
                   variant="outline"
@@ -264,6 +250,15 @@ export default function RestReveal() {
                 >
                   <RotateCcw className="w-4 h-4" />
                   Take Quiz Again
+                </Button>
+
+                <Button
+                  asChild
+                  className="flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <a href="https://ko-fi.com/caparicafoundersbreakfast" target="_blank" rel="noopener noreferrer">
+                    ☕ Thank you Klarita
+                  </a>
                 </Button>
               </div>
             </CardContent>
@@ -288,21 +283,21 @@ export default function RestReveal() {
             className="h-2 bg-slate-200"
             style={{
               background: `linear-gradient(to right, 
-    ${
-      currentRestType.color.includes("blue")
-        ? "#3b82f6"
-        : currentRestType.color.includes("green")
-          ? "#10b981"
-          : currentRestType.color.includes("pink")
-            ? "#ec4899"
-            : currentRestType.color.includes("purple")
-              ? "#8b5cf6"
-              : currentRestType.color.includes("yellow")
-                ? "#f59e0b"
-                : currentRestType.color.includes("emerald")
-                  ? "#059669"
-                  : "#f97316"
-    } ${progress}%, #e2e8f0 ${progress}%)`,
+  ${
+    currentRestType.color.includes("blue")
+      ? "#3b82f6"
+      : currentRestType.color.includes("green")
+        ? "#10b981"
+        : currentRestType.color.includes("pink")
+          ? "#ec4899"
+          : currentRestType.color.includes("purple")
+            ? "#8b5cf6"
+            : currentRestType.color.includes("yellow")
+              ? "#f59e0b"
+              : currentRestType.color.includes("emerald")
+                ? "#059669"
+                : "#f97316"
+  } ${progress}%, #e2e8f0 ${progress}%)`,
             }}
           />
         </div>
